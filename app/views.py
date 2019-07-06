@@ -466,4 +466,3 @@ def terminals(request):
         ws.close()
 
 
-print('=====================')
