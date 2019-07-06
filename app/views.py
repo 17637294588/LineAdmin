@@ -465,4 +465,3 @@ def terminals(request):
         channle.close()
         ws.close()
 
-print('=======================')
