@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../../static/jquery-1.12.4.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input id="chat-message-input" type="text" size="100"><br>
+    <button onclick="sendmessage()">提交</button>
+</body>
+
+<script>
+
+    // 生成socket对象
+    var socket = new WebSocket("ws:"+window.location.host+"/api/test_socket");
+
+    socket.onopen = function(){
+        console.log('成功连接上websocket')    // 成功连接上websocket
+    };
+
+    socket.onmessage = function (e) {
+        console.log('返回的message: ' + e.data);//打印服务端返回的数据
+        };
+
+    socket.onclose=function(e){
+        console.log('关闭websocket'+e);
+        socket.close(); //关闭TCP连接
+    };
+
+    if (socket.readyState == WebSocket.OPEN){
+            socket.onopen();
+            }
+
+    window.s = socket;
+
+    function sendmessage(){
+
+        window.s.send(document.getElementById("chat-message-input").value);
+
+    }
+</script>
+
+</html>

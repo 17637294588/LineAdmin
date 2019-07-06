@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+     // 生成socket对象
+     var socket = new WebSocket("ws:"+window.location.host+"/api/test_websocket");
+
+    socket.onopen = function(){
+        
+        console.log('成功连接上websocket')    // 成功连接上websocket
+    };
+
+    socket.onmessage = function (e) {
+        var data = JSON.parse(e.data)
+        alert('现在时间：'+data.DateNow)
+        console.log('返回的message: ' + e.data);//打印服务端返回的数据
+        };
+
+    socket.onclose=function(e){
+        console.log('关闭websocket'+e);
+        socket.close(); //关闭TCP连接
+    };
+
+    if (socket.readyState == WebSocket.OPEN){
+            socket.onopen();
+        }
+</script>
+</html>
