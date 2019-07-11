@@ -32,6 +32,7 @@ urlpatterns = [
     path('socket_push',TemplateView.as_view(template_name='socket_push.html')),
     # path('test_websocket',views.test_websocket),
     path('terminals',views.terminals),
+    path('demo',views.demo),
 
  
     

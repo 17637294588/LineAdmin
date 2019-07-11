@@ -153,7 +153,9 @@ class Chack_type(APIView):
         return Response(coursecelles.data)
 
 
-
+'''
+    oss介绍:https://helpcdn.aliyun.com/document_detail/31817.html
+'''
 
 
 import oss2
@@ -464,4 +466,23 @@ def terminals(request):
 
         channle.close()
         ws.close()
+
+
+
+'''
+    # 中间件：https://www.cnblogs.com/276815076/p/9593419.html
+'''
+def demo(request):
+    id = request.GET.get('id')
+    print('视图函数')
+    try:
+        print(a)
+    except Exception as e:
+        raise ValueError('抛出的异常')
+
+    return HttpResponse(json.dumps({'code':200}))
+
+
+
+
 
