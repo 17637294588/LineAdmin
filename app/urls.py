@@ -33,6 +33,11 @@ urlpatterns = [
     # path('test_websocket',views.test_websocket),
     path('terminals',views.terminals),
     path('demo',views.demo),
+    path('test',views.test),
+    path('call_back/',views.Call_back.as_view()),
+    path('',views.Youment.as_view()),
+    
+
 
  
     
